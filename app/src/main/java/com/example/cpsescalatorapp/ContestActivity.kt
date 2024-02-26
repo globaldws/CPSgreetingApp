@@ -25,13 +25,14 @@ class ContestActivity : AppCompatActivity() {
     private lateinit var databaseHelper: DatabaseHelper
     private val WRITE_EXTERNAL_STORAGE_REQUEST = 123
     private val selectedOptions = StringBuilder()
+    var selectedOptionsString = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_contest)
 
-        databaseHelper = DatabaseHelper(this, null)
+        databaseHelper = DatabaseHelper(this)
 
-        val helper = DatabaseHelper(this, null)
+        val helper = DatabaseHelper(this)
         val name = findViewById<EditText>(R.id.first_name)
         val lastName = findViewById<EditText>(R.id.last_name)
         val email = findViewById<EditText>(R.id.editTextTextEmailAddress)
@@ -68,8 +69,9 @@ class ContestActivity : AppCompatActivity() {
         }
 
         submitBtn.setOnClickListener {
-            helper.addPerson(name.text.toString(), lastName.text.toString(), email.text.toString())
+            helper.addPerson(name.text.toString(), lastName.text.toString(), email.text.toString(), selectedOptionsString)
             Toast.makeText(this, name.text.toString() + " added to database", Toast.LENGTH_LONG).show()
+            finish()
         }
     }
 
@@ -83,11 +85,10 @@ class ContestActivity : AppCompatActivity() {
     }
 
     private fun updateUI() {
-        // Update your UI with the updated string
-        val selectedOptionsString = selectedOptions.toString()
-        // For example, set the string to a TextView
-        val textView = findViewById<TextView>(R.id.textView_test)
-        textView.text = selectedOptionsString
+        selectedOptionsString = selectedOptions.toString()
+        // For testing
+//        val textView = findViewById<TextView>(R.id.textView_test)
+//        textView.text = selectedOptionsString
     }
 
     private fun saveUsersDBtoTxtFile() {
@@ -102,6 +103,7 @@ class ContestActivity : AppCompatActivity() {
                 .append("\nFirstName: ").append(cursor.getString(1))
                 .append("\nLastName: ").append(cursor.getString(2))
                 .append("\nEmail: ").append(cursor.getString(3))
+                .append("\nSelectedOptions: ").append(cursor.getString(4))
                 .append("\n\n")
         }
 

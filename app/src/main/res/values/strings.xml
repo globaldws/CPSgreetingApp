@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">CPSescalatorApp</string>
+    <string name="app_name">CPSgreetingsApp</string>
     <string name="welcome_to_the_health_wellness_n_and_sustainability_n_conference">Welcome to the Health Wellness, \n and Sustainability \n Conference</string>
     <string name="food_facilites"><![CDATA[Food & Facilites]]></string>
     <string name="contest_entry">Contest Entry</string>

@@ -194,7 +194,8 @@
         android:text="Testing Data"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_submit" />
+        app:layout_constraintTop_toBottomOf="@+id/button_submit"
+        android:visibility="gone"/>
 
     <ImageView
         android:id="@+id/imageView2"
