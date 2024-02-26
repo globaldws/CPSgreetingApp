@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">CPSescalatorApp</string>
+    <string name="welcome_to_the_health_wellness_n_and_sustainability_n_conference">Welcome to the Health Wellness, \n and Sustainability \n Conference</string>
+    <string name="food_facilites"><![CDATA[Food & Facilites]]></string>
+    <string name="contest_entry">Contest Entry</string>
+    <string name="what_s_next">What\'s Next?</string>
+    <string name="please_enter_your_contact_details_for_a_chance_nto_win_a_2500_virtual_workshop_with_our_new_npartner">Please enter your contact details for a chance \nto win a $2500 virtual workshop with our new \npartner:</string>
+    <string name="globaldws_corporation">GlobalDWS Corporation</string>
+    <string name="firstname">First Name:</string>
+    <string name="last_name">Last Name:</string>
+    <string name="email">Email:</string>
+    <string name="technology_adoption_for_and_people">Technology Adoption for and People</string>
+    <string name="virbrix_esg_monitoring">VirBrix: ESG Monitoring</string>
 </resources>

@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".ContestActivity">
+
+    <ImageView
+        android:id="@+id/cps_logo"
+        android:layout_width="356dp"
+        android:layout_height="73dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="128dp"
+        android:gravity="center_horizontal"
+        android:text="@string/please_enter_your_contact_details_for_a_chance_nto_win_a_2500_virtual_workshop_with_our_new_npartner"
+        android:textColor="@color/text"
+        android:textSize="25sp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView_globalLogo"
+        android:layout_width="282dp"
+        android:layout_height="71dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="64dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/globaldws" />
+
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/firstname"
+        android:textColor="@color/text"
+        android:textSize="25sp"
+        android:textStyle="normal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <EditText
+        android:id="@+id/first_name"
+        android:layout_width="178dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:inputType="text"
+        app:layout_constraintStart_toEndOf="@+id/textView5"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/last_name"
+        android:textColor="@color/text"
+        android:textSize="25sp"
+        app:layout_constraintStart_toEndOf="@+id/first_name"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <EditText
+        android:id="@+id/last_name"
+        android:layout_width="178dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="22sp"
+        android:ems="10"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.13"
+        app:layout_constraintStart_toEndOf="@+id/textView6"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <TextView
+        android:id="@+id/email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/email"
+        android:textColor="@color/text"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+    <EditText
+        android:id="@+id/editTextTextEmailAddress"
+        android:layout_width="500dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.007"
+        app:layout_constraintStart_toEndOf="@+id/email"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="24dp"
+        android:text="Select Wrokshop Topic(s):"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress" />
+
+    <androidx.gridlayout.widget.GridLayout
+        android:id="@+id/gridLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        app:columnCount="2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4">
+
+        <CheckBox
+            android:id="@+id/option_3_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Preparing For AI Deployment  "
+            android:textColor="@color/text"
+            android:textSize="20sp" />
+
+        <CheckBox
+            android:id="@+id/option_3_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Robotics and IoT in Senior Care"
+            android:textColor="@color/text"
+            android:textSize="20sp" />
+
+        <CheckBox
+            android:id="@+id/option_3_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Workplace Experience \n and Efficiency "
+            android:textColor="@color/text"
+            android:textSize="20sp" />
+
+        <CheckBox
+            android:id="@+id/option_3_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Smart Building and Cybersecurity"
+            android:textColor="@color/text"
+            android:textSize="20sp" />
+
+    </androidx.gridlayout.widget.GridLayout>
+
+    <Button
+        android:id="@+id/button_submit"
+        android:layout_width="300sp"
+        android:layout_height="50sp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/btn_color"
+        android:shadowColor="@color/btn_color"
+        android:text="Submit"
+        android:textColorHighlight="@color/btn_color"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gridLayout" />
+
+    <TextView
+        android:id="@+id/textView_test"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Testing Data"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_submit" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="1143dp"
+        android:layout_height="426dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/img_bottom" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
