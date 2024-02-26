@@ -1,2 +1,2 @@
-# CPCescalatorApp
-Screen divided in two, the bottom half for image or video and the upper half for interactive pages.
+# CPCgreetingApp
+Three pages: Greetings page, form page, and "what's next" page
