@@ -21,9 +21,9 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="128dp"
+        android:layout_marginTop="150dp"
         android:gravity="center_horizontal"
-        android:text="@string/please_enter_your_contact_details_for_a_chance_nto_win_a_2500_virtual_workshop_with_our_new_npartner"
+        android:text="Is this your first time talking to ta robot?"
         android:textColor="@color/text"
         android:textSize="25sp"
         android:textStyle="normal"
@@ -54,7 +54,8 @@
         android:textSize="25sp"
         android:textStyle="normal"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        android:visibility="gone"/>
 
     <EditText
         android:id="@+id/first_name"
@@ -64,7 +65,8 @@
         android:ems="10"
         android:inputType="text"
         app:layout_constraintStart_toEndOf="@+id/textView5"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        android:visibility="gone"/>
 
     <TextView
         android:id="@+id/textView6"
@@ -76,7 +78,8 @@
         android:textColor="@color/text"
         android:textSize="25sp"
         app:layout_constraintStart_toEndOf="@+id/first_name"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        android:visibility="gone"/>
 
     <EditText
         android:id="@+id/last_name"
@@ -89,7 +92,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.13"
         app:layout_constraintStart_toEndOf="@+id/textView6"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        android:visibility="gone"/>
 
     <TextView
         android:id="@+id/email"
@@ -101,7 +105,8 @@
         android:textColor="@color/text"
         android:textSize="25sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+        app:layout_constraintTop_toBottomOf="@+id/textView5"
+        android:visibility="gone"/>
 
     <EditText
         android:id="@+id/editTextTextEmailAddress"
@@ -113,24 +118,53 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.007"
         app:layout_constraintStart_toEndOf="@+id/email"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+        app:layout_constraintTop_toBottomOf="@+id/textView5"
+        android:visibility="gone"/>
+
+    <RadioGroup
+        android:id="@+id/radio_group_7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/textView3">
+
+        <RadioButton
+            android:id="@+id/option_7_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Yes"
+            android:textSize="20sp"
+            android:textColor="@color/text"/>
+
+        <RadioButton
+            android:id="@+id/option_7_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:text="No"
+            android:textSize="20sp"
+            android:textColor="@color/text"/>
+    </RadioGroup>
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="24dp"
-        android:text="Select Wrokshop Topic(s):"
+        android:layout_marginTop="284dp"
+        android:text="We are here to help you learn\n how robotics and AI solutions\n can help address some if your key challenges.\n\n What areas are top priority for you?"
         android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@color/text"
+        android:gravity="center"/>
 
     <androidx.gridlayout.widget.GridLayout
         android:id="@+id/gridLayout"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
         app:columnCount="2"
         app:layout_constraintEnd_toEndOf="parent"
@@ -141,7 +175,7 @@
             android:id="@+id/option_3_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Preparing For AI Deployment  "
+            android:text="Health &amp; Safety"
             android:textColor="@color/text"
             android:textSize="20sp" />
 
@@ -149,7 +183,7 @@
             android:id="@+id/option_3_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Robotics and IoT in Senior Care"
+            android:text="Labour shortages/retention"
             android:textColor="@color/text"
             android:textSize="20sp" />
 
@@ -157,7 +191,7 @@
             android:id="@+id/option_3_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Workplace Experience \n and Efficiency "
+            android:text="Smart Building"
             android:textColor="@color/text"
             android:textSize="20sp" />
 
@@ -165,7 +199,23 @@
             android:id="@+id/option_3_4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Smart Building and Cybersecurity"
+            android:text="Physical &amp; Cyber security"
+            android:textColor="@color/text"
+            android:textSize="20sp" />
+
+        <CheckBox
+            android:id="@+id/option_3_5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Social Engagement     "
+            android:textColor="@color/text"
+            android:textSize="20sp" />
+
+        <CheckBox
+            android:id="@+id/option_3_6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Disinfection/Cleaning support"
             android:textColor="@color/text"
             android:textSize="20sp" />
 
@@ -175,7 +225,7 @@
         android:id="@+id/button_submit"
         android:layout_width="300sp"
         android:layout_height="50sp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
         android:backgroundTint="@color/btn_color"
         android:shadowColor="@color/btn_color"
         android:text="Submit"

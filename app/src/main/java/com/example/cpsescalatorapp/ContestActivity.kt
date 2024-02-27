@@ -17,7 +17,11 @@ import androidx.core.content.ContextCompat
 import java.io.File
 import java.io.FileOutputStream
 import android.Manifest
+import android.content.Intent
+import android.view.View
 import android.widget.CheckBox
+import android.widget.RadioButton
+import android.widget.RadioGroup
 
 
 class ContestActivity : AppCompatActivity() {
@@ -25,7 +29,9 @@ class ContestActivity : AppCompatActivity() {
     private lateinit var databaseHelper: DatabaseHelper
     private val WRITE_EXTERNAL_STORAGE_REQUEST = 123
     private val selectedOptions = StringBuilder()
-    var selectedOptionsString = ""
+    var selectedOptionsString = " "
+    var lastName = "none"
+    var name = "none"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_contest)
@@ -33,9 +39,10 @@ class ContestActivity : AppCompatActivity() {
         databaseHelper = DatabaseHelper(this)
 
         val helper = DatabaseHelper(this)
-        val name = findViewById<EditText>(R.id.first_name)
-        val lastName = findViewById<EditText>(R.id.last_name)
-        val email = findViewById<EditText>(R.id.editTextTextEmailAddress)
+//        val name = findViewById<EditText>(R.id.first_name)
+//        val lastName = findViewById<EditText>(R.id.last_name)
+//        val email = findViewById<EditText>(R.id.editTextTextEmailAddress)
+
         val submitBtn = findViewById<Button>(R.id.button_submit)
         val imageViewGlobalLogo = findViewById<ImageView>(R.id.imageView_globalLogo)
         val dataTest = findViewById<TextView>(R.id.textView_test)
@@ -43,21 +50,40 @@ class ContestActivity : AppCompatActivity() {
         val option2 = findViewById<CheckBox>(R.id.option_3_2)
         val option3 = findViewById<CheckBox>(R.id.option_3_3)
         val option4 = findViewById<CheckBox>(R.id.option_3_4)
+        val option5 = findViewById<CheckBox>(R.id.option_3_5)
+        val option6 = findViewById<CheckBox>(R.id.option_3_6)
+        val answer7 = findViewById<RadioGroup>(R.id.radio_group_7)
+
+        answer7.setOnCheckedChangeListener { group, checkedId ->
+            if (checkedId != -1) {
+                val selectedRadioButton = group.findViewById<RadioButton>(checkedId)
+                val selectedText = selectedRadioButton.text.toString()
+                if (selectedText == "Yes"){
+                    name = "Yes"
+                }else{
+                    name = "No"
+                }
+                showToast(selectedText)
+            }
+        }
 
         option1.setOnCheckedChangeListener { _, isChecked ->
             updateSelectedOptions(option1.text.toString(), isChecked)
         }
-
         option2.setOnCheckedChangeListener { _, isChecked ->
             updateSelectedOptions(option2.text.toString(), isChecked)
         }
-
         option3.setOnCheckedChangeListener { _, isChecked ->
             updateSelectedOptions(option3.text.toString(), isChecked)
         }
-
         option4.setOnCheckedChangeListener { _, isChecked ->
             updateSelectedOptions(option4.text.toString(), isChecked)
+        }
+        option5.setOnCheckedChangeListener { _, isChecked ->
+            updateSelectedOptions(option5.text.toString(), isChecked)
+        }
+        option6.setOnCheckedChangeListener { _, isChecked ->
+            updateSelectedOptions(option6.text.toString(), isChecked)
         }
 
         imageViewGlobalLogo.setOnClickListener {
@@ -69,10 +95,15 @@ class ContestActivity : AppCompatActivity() {
         }
 
         submitBtn.setOnClickListener {
-            helper.addPerson(name.text.toString(), lastName.text.toString(), email.text.toString(), selectedOptionsString)
-            Toast.makeText(this, name.text.toString() + " added to database", Toast.LENGTH_LONG).show()
-            finish()
+            helper.addPerson(name, lastName, selectedOptionsString)
+//            helper.addPerson(name.text.toString(), lastName.text.toString(), email.text.toString(), selectedOptionsString)
+            Toast.makeText(this, name + " added to database", Toast.LENGTH_LONG).show()
+            startActivity(Intent(this, WelcomeActivity::class.java))
         }
+    }
+    private fun showToast(text: String) {
+        val toast = Toast.makeText(this, text, Toast.LENGTH_SHORT)
+        toast.show()
     }
 
     private fun updateSelectedOptions(optionText: String, isChecked: Boolean) {
@@ -102,8 +133,7 @@ class ContestActivity : AppCompatActivity() {
             buffer.append("ID: ").append(cursor.getInt(0))
                 .append("\nFirstName: ").append(cursor.getString(1))
                 .append("\nLastName: ").append(cursor.getString(2))
-                .append("\nEmail: ").append(cursor.getString(3))
-                .append("\nSelectedOptions: ").append(cursor.getString(4))
+                .append("\nSelectedOptions: ").append(cursor.getString(3))
                 .append("\n\n")
         }
 

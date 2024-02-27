@@ -20,12 +20,15 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.contestEntry.setOnClickListener {
+        binding.whatsNext.setOnClickListener {
             startActivity(Intent(this, ContestActivity::class.java))
         }
-        binding.whatsNext.setOnClickListener {
-            startActivity(Intent(this, WelcomeActivity::class.java))
-        }
+//        binding.contestEntry.setOnClickListener {
+//            startActivity(Intent(this, ContestActivity::class.java))
+//        }
+//        binding.whatsNext.setOnClickListener {
+//            startActivity(Intent(this, WelcomeActivity::class.java))
+//        }
     }
 
 

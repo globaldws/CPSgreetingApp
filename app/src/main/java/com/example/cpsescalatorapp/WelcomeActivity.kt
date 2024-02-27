@@ -10,7 +10,7 @@ class WelcomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_welcome)
 
-        val welcomeImage = findViewById<ImageView>(R.id.imageView_welcome)
+        val welcomeImage = findViewById<ImageView>(R.id.imageView3)
         welcomeImage.setOnClickListener {
             startActivity(Intent(this, MainActivity::class.java))
         }

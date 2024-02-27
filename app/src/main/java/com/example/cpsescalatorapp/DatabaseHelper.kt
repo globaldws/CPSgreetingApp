@@ -20,17 +20,21 @@ class DatabaseHelper(context: Context) :
         onCreate(db)
     }
 
-    fun addPerson(firstName: String, lastName: String, email: String, selectedOptions: String) {
+    fun addPerson(firstName: String, lastName: String, selectedOptions: String) {
         val values = ContentValues().apply {
             put(DatabaseContract.UsersTable.COLUMN_FIRST_NAME, firstName)
             put(DatabaseContract.UsersTable.COLUMN_LAST_NAME, lastName)
-            put(DatabaseContract.UsersTable.COLUMN_EMAIL, email)
             put(DatabaseContract.UsersTable.COLUMN_SELECTED_OPTIONS, selectedOptions)
         }
         val db = writableDatabase
-
-        db.insert(DatabaseContract.UsersTable.TABLE_NAME, null, values)
+        val newRowId = db.insert(DatabaseContract.UsersTable.TABLE_NAME, null, values)
+//        db.insert(DatabaseContract.UsersTable.TABLE_NAME, null, values)
         db.close()
+        if (newRowId != -1L) {
+            Log.v("addPerson", "Data saved successfully with ID: $newRowId")
+        } else {
+            Log.e("addPerson", "Failed to save data")
+        }
     }
 
     fun getAllPersons(): Cursor? {
@@ -45,7 +49,6 @@ class DatabaseHelper(context: Context) :
         const val ID_COL = "id"
         const val FIRST_NAME_COL = "first_name"
         const val LAST_NAME_COL = "last_name"
-        const val EMAIL_COL = "email"
         const val COLUMN_SELECTED_OPTIONS = "selected_options"
     }
 }
