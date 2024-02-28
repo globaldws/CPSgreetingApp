@@ -44,7 +44,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="176dp"
         android:gravity="center"
-        android:text="Pleas enjoy the \n conference!"
+        android:text="Please enjoy the \n conference!"
         android:textColor="@color/text"
         android:textSize="48sp"
         android:textStyle="bold"
@@ -61,7 +61,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/img_bottom" />
+        app:srcCompat="@drawable/img_slogan" />
 
     <ImageView
         android:id="@+id/imageView3"

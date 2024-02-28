@@ -50,8 +50,8 @@ class ContestActivity : AppCompatActivity() {
         val option2 = findViewById<CheckBox>(R.id.option_3_2)
         val option3 = findViewById<CheckBox>(R.id.option_3_3)
         val option4 = findViewById<CheckBox>(R.id.option_3_4)
-        val option5 = findViewById<CheckBox>(R.id.option_3_5)
-        val option6 = findViewById<CheckBox>(R.id.option_3_6)
+//        val option5 = findViewById<CheckBox>(R.id.option_3_5)
+//        val option6 = findViewById<CheckBox>(R.id.option_3_6)
         val answer7 = findViewById<RadioGroup>(R.id.radio_group_7)
 
         answer7.setOnCheckedChangeListener { group, checkedId ->
@@ -79,12 +79,12 @@ class ContestActivity : AppCompatActivity() {
         option4.setOnCheckedChangeListener { _, isChecked ->
             updateSelectedOptions(option4.text.toString(), isChecked)
         }
-        option5.setOnCheckedChangeListener { _, isChecked ->
+        /*option5.setOnCheckedChangeListener { _, isChecked ->
             updateSelectedOptions(option5.text.toString(), isChecked)
         }
         option6.setOnCheckedChangeListener { _, isChecked ->
             updateSelectedOptions(option6.text.toString(), isChecked)
-        }
+        }*/
 
         imageViewGlobalLogo.setOnClickListener {
             clickCount++
@@ -95,9 +95,11 @@ class ContestActivity : AppCompatActivity() {
         }
 
         submitBtn.setOnClickListener {
-            helper.addPerson(name, lastName, selectedOptionsString)
+            if (selectedOptionsString != " "){
+                helper.addPerson(name, lastName, selectedOptionsString)
 //            helper.addPerson(name.text.toString(), lastName.text.toString(), email.text.toString(), selectedOptionsString)
-            Toast.makeText(this, name + " added to database", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, name + " added to database", Toast.LENGTH_LONG).show()
+            }
             startActivity(Intent(this, WelcomeActivity::class.java))
         }
     }
