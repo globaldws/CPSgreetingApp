@@ -18,10 +18,14 @@ import java.io.File
 import java.io.FileOutputStream
 import android.Manifest
 import android.content.Intent
+import android.speech.tts.TextToSpeech
 import android.view.View
 import android.widget.CheckBox
 import android.widget.RadioButton
 import android.widget.RadioGroup
+import com.example.cpsescalatorapp.databinding.ActivityContestBinding
+import com.example.cpsescalatorapp.databinding.ActivityMainBinding
+import com.example.cpsescalatorapp.databinding.ActivityWelcomeBinding
 
 
 class ContestActivity : AppCompatActivity() {
@@ -32,29 +36,27 @@ class ContestActivity : AppCompatActivity() {
     var selectedOptionsString = " "
     var lastName = "none"
     var name = "none"
+    private lateinit var textToSpeechManager: TextToSpeechManager
+    var text = ""
+    private lateinit var binding: ActivityContestBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_contest)
+//        setContentView(R.layout.activity_contest)
+        binding = ActivityContestBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         databaseHelper = DatabaseHelper(this)
 
         val helper = DatabaseHelper(this)
-//        val name = findViewById<EditText>(R.id.first_name)
-//        val lastName = findViewById<EditText>(R.id.last_name)
-//        val email = findViewById<EditText>(R.id.editTextTextEmailAddress)
 
-        val submitBtn = findViewById<Button>(R.id.button_submit)
-        val imageViewGlobalLogo = findViewById<ImageView>(R.id.imageView_globalLogo)
-        val dataTest = findViewById<TextView>(R.id.textView_test)
-        val option1 = findViewById<CheckBox>(R.id.option_3_1)
-        val option2 = findViewById<CheckBox>(R.id.option_3_2)
-        val option3 = findViewById<CheckBox>(R.id.option_3_3)
-        val option4 = findViewById<CheckBox>(R.id.option_3_4)
-//        val option5 = findViewById<CheckBox>(R.id.option_3_5)
-//        val option6 = findViewById<CheckBox>(R.id.option_3_6)
-        val answer7 = findViewById<RadioGroup>(R.id.radio_group_7)
+        textToSpeechManager = TextToSpeechManager(this)
+        text = getString(R.string.welcome_message)
 
-        answer7.setOnCheckedChangeListener { group, checkedId ->
+        binding.imageView2.setOnClickListener {
+            textToSpeechManager.speak(text)
+        }
+
+        binding.radioGroup7.setOnCheckedChangeListener { group, checkedId ->
             if (checkedId != -1) {
                 val selectedRadioButton = group.findViewById<RadioButton>(checkedId)
                 val selectedText = selectedRadioButton.text.toString()
@@ -67,17 +69,17 @@ class ContestActivity : AppCompatActivity() {
             }
         }
 
-        option1.setOnCheckedChangeListener { _, isChecked ->
-            updateSelectedOptions(option1.text.toString(), isChecked)
+        binding.option31.setOnCheckedChangeListener { _, isChecked ->
+            updateSelectedOptions(binding.option31.text.toString(), isChecked)
         }
-        option2.setOnCheckedChangeListener { _, isChecked ->
-            updateSelectedOptions(option2.text.toString(), isChecked)
+        binding.option32.setOnCheckedChangeListener { _, isChecked ->
+            updateSelectedOptions(binding.option32.text.toString(), isChecked)
         }
-        option3.setOnCheckedChangeListener { _, isChecked ->
-            updateSelectedOptions(option3.text.toString(), isChecked)
+        binding.option33.setOnCheckedChangeListener { _, isChecked ->
+            updateSelectedOptions(binding.option33.text.toString(), isChecked)
         }
-        option4.setOnCheckedChangeListener { _, isChecked ->
-            updateSelectedOptions(option4.text.toString(), isChecked)
+        binding.option34.setOnCheckedChangeListener { _, isChecked ->
+            updateSelectedOptions(binding.option34.text.toString(), isChecked)
         }
         /*option5.setOnCheckedChangeListener { _, isChecked ->
             updateSelectedOptions(option5.text.toString(), isChecked)
@@ -86,7 +88,7 @@ class ContestActivity : AppCompatActivity() {
             updateSelectedOptions(option6.text.toString(), isChecked)
         }*/
 
-        imageViewGlobalLogo.setOnClickListener {
+        binding.imageViewGlobalLogo.setOnClickListener {
             clickCount++
             if (clickCount == 5) {
                 saveUsersDBtoTxtFile()
@@ -94,10 +96,9 @@ class ContestActivity : AppCompatActivity() {
             }
         }
 
-        submitBtn.setOnClickListener {
+        binding.buttonSubmit.setOnClickListener {
             if (selectedOptionsString != " "){
                 helper.addPerson(name, lastName, selectedOptionsString)
-//            helper.addPerson(name.text.toString(), lastName.text.toString(), email.text.toString(), selectedOptionsString)
                 Toast.makeText(this, name + " added to database", Toast.LENGTH_LONG).show()
             }
             startActivity(Intent(this, WelcomeActivity::class.java))
@@ -206,5 +207,10 @@ class ContestActivity : AppCompatActivity() {
             return false
         }
         return true
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        textToSpeechManager.shutdown()
     }
 }
