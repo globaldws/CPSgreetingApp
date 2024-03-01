@@ -14,11 +14,12 @@ android {
         minSdk 23
         targetSdk 34
         versionCode 1
-        versionName "1.0.7_beta"
+        versionName "1.0.8_beta"
         /*
         TODO:
             * Add voice message on main screen load and on slide click.
         * VERSION HISTORY
+        * 1.0.8     Welcome message updated.
         * 1.0.7     Text-to-speech welcome message added and code refactoring.
         * 1.0.6     UI updates in the activity_contest and do not save empty data.
         * 1.0.5     UI updates, 6 checkboxes to 4

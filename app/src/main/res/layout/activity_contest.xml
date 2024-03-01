@@ -154,7 +154,7 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="236dp"
+        android:layout_marginTop="200dp"
         android:gravity="center"
         android:text="Hi! My name is Charlie.\n I'm a robot helper from GlobalDWS.\n\nWhich of these topics are \npriorities in your community?"
         android:textColor="@color/text"
