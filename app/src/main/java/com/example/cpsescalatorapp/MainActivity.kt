@@ -23,8 +23,13 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        textToSpeechManager = TextToSpeechManager(this)
-        textToSpeechManager.speak(getString(R.string.welcome_message))
+//        textToSpeechManager = TextToSpeechManager(this)
+//        textToSpeechManager.speak(getString(R.string.welcome_message))
+
+        textToSpeechManager = TextToSpeechManager(this) {
+            // This block will be executed when TextToSpeech is initialized
+            textToSpeechManager.speak(getString(R.string.welcome_message))
+        }
 
         binding.imageView2.setOnClickListener {
             textToSpeechManager.speak(getString(R.string.welcome_message))
@@ -43,7 +48,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onDestroy() {
-        super.onDestroy()
         textToSpeechManager.shutdown()
+        super.onDestroy()
     }
 }

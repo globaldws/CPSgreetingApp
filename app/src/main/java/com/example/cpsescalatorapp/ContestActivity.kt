@@ -37,7 +37,6 @@ class ContestActivity : AppCompatActivity() {
     var lastName = "none"
     var name = "none"
     private lateinit var textToSpeechManager: TextToSpeechManager
-    var text = ""
     private lateinit var binding: ActivityContestBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,17 +45,18 @@ class ContestActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         databaseHelper = DatabaseHelper(this)
-
         val helper = DatabaseHelper(this)
 
-        textToSpeechManager = TextToSpeechManager(this)
-        text = getString(R.string.welcome_message)
-
-        binding.imageView2.setOnClickListener {
-            textToSpeechManager.speak(text)
+        textToSpeechManager = TextToSpeechManager(this) {
+            // This block will be executed when TextToSpeech is initialized
+            textToSpeechManager.speak(getString(R.string.query_message))
         }
 
-        binding.radioGroup7.setOnCheckedChangeListener { group, checkedId ->
+        binding.imageView2.setOnClickListener {
+            textToSpeechManager.speak(getString(R.string.welcome_message))
+        }
+
+        /*binding.radioGroup7.setOnCheckedChangeListener { group, checkedId ->
             if (checkedId != -1) {
                 val selectedRadioButton = group.findViewById<RadioButton>(checkedId)
                 val selectedText = selectedRadioButton.text.toString()
@@ -67,11 +67,12 @@ class ContestActivity : AppCompatActivity() {
                 }
                 showToast(selectedText)
             }
-        }
+        }*/
 
         binding.option31.setOnCheckedChangeListener { _, isChecked ->
             updateSelectedOptions(binding.option31.text.toString(), isChecked)
         }
+
         binding.option32.setOnCheckedChangeListener { _, isChecked ->
             updateSelectedOptions(binding.option32.text.toString(), isChecked)
         }
@@ -209,8 +210,13 @@ class ContestActivity : AppCompatActivity() {
         return true
     }
 
+    override fun onResume() {
+        super.onResume()
+        textToSpeechManager.speak(getString(R.string.query_message))
+    }
+
     override fun onDestroy() {
-        super.onDestroy()
         textToSpeechManager.shutdown()
+        super.onDestroy()
     }
 }

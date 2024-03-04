@@ -15,19 +15,24 @@ class WelcomeActivity : AppCompatActivity() {
         binding = ActivityWelcomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        textToSpeechManager = TextToSpeechManager(this)
+        textToSpeechManager = TextToSpeechManager(this) {
+            textToSpeechManager.speak(getString(R.string.enjoy_message))
+        }
 
         binding.imageView2.setOnClickListener {
             textToSpeechManager.speak(getString(R.string.welcome_message))
         }
 
         binding.imageView3.setOnClickListener {
-            textToSpeechManager.speak(getString(R.string.welcome_message))
             startActivity(Intent(this, MainActivity::class.java))
         }
     }
+    override fun onResume() {
+        super.onResume()
+        textToSpeechManager.speak(getString(R.string.enjoy_message))
+    }
     override fun onDestroy() {
-        super.onDestroy()
         textToSpeechManager.shutdown()
+        super.onDestroy()
     }
 }

@@ -11,5 +11,7 @@
     <string name="email">Email:</string>
     <string name="technology_adoption_for_and_people">Technology Adoption for and People</string>
     <string name="virbrix_esg_monitoring">VirBrix: ESG Monitoring</string>
-    <string name="welcome_message"><![CDATA[Welcome to \'Complete Purchasing Services\'... Food Service & facilities conference]]></string>
+    <string name="welcome_message"><![CDATA[Welcome to \'Complete Purchasing Services\'… Food Service & facilities conference]]></string>
+    <string name="query_message">Hi! My name is Charlie… Which of these topics are priorities in your community?</string>
+    <string name="enjoy_message">Please enjoy the conference!</string>
 </resources>

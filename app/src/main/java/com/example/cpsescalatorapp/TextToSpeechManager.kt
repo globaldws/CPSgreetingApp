@@ -5,7 +5,7 @@ import android.speech.tts.TextToSpeech
 import android.util.Log
 import java.util.Locale
 
-class TextToSpeechManager(private val context: Context) : TextToSpeech.OnInitListener {
+class TextToSpeechManager(private val context: Context, private val onInitialized: () -> Unit) : TextToSpeech.OnInitListener {
 
     private var textToSpeech: TextToSpeech? = null
 
@@ -16,6 +16,7 @@ class TextToSpeechManager(private val context: Context) : TextToSpeech.OnInitLis
     override fun onInit(status: Int) {
         if (status != TextToSpeech.ERROR) {
             textToSpeech?.language = Locale.US
+            onInitialized()
         } else {
             Log.e(TAG, "Initialization failed")
         }
