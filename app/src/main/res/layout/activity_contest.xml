@@ -9,9 +9,9 @@
 
     <ImageView
         android:id="@+id/cps_logo"
-        android:layout_width="356dp"
+        android:layout_width="300sp"
         android:layout_height="73dp"
-        android:layout_marginStart="52dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -35,10 +35,10 @@
 
     <ImageView
         android:id="@+id/imageView_globalLogo"
-        android:layout_width="282dp"
+        android:layout_width="282sp"
         android:layout_height="71dp"
         android:layout_marginTop="32dp"
-        android:layout_marginEnd="64dp"
+        android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/globaldws" />

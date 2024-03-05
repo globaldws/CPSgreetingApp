@@ -14,9 +14,10 @@ android {
         minSdk 23
         targetSdk 34
         versionCode 1
-        versionName "1.0.9_beta"
+        versionName "1.0.10_beta"
         /*
         * VERSION HISTORY
+        * 1.0.10    BugFix- Logos overlapping, and grammar.
         * 1.0.9     Voice messages added on activity load.
         * 1.0.8     Welcome message updated.
         * 1.0.7     Text-to-speech welcome message added and code refactoring.
